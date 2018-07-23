@@ -1,0 +1,19 @@
+<aura:component controller="FileUploadController"> 
+   <aura:attribute name="parentId" type="String"/>
+   <aura:attribute name="showLoadingSpinner" type="boolean" default="false" />
+    
+   <aura:attribute name="fileName" type="String" default="ファイルは選択さていません" />
+    
+   <lightning:input aura:id="fileId" onchange="{!c.handleFilesChange}" type="file" name="file" label="ファイルを添付してください。" multiple="false"/>
+   <div class="slds-text-body_small slds-text-color_error">{!v.fileName} </div>
+ 
+   <aura:if isTrue="{!v.showLoadingSpinner}">
+      <div class="slds-text-body_small slds-text-color_error">アップロード中です... 
+         <img src="/auraFW/resources/aura/images/spinner.gif" class="spinner-img" alt="Loading"/>'
+      </div>
+   </aura:if>
+   
+ <br/>
+ 
+   <button class="slds-button slds-button_brand" onclick="{!c.doSave}">アップロード</button>
+</aura:component>
